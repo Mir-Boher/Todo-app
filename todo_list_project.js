@@ -1,6 +1,6 @@
 const listItems = document.querySelector(".list-items");
 const inputField = document.getElementById("task-input");
-const clearBtn = document.querySelector(".clear-list-btn");
+const clearCompletedBtn = document.querySelector(".clear-completed-list-btn");
 const remainingItems = document.querySelector(".remaining-items");
 const listInfo = document.querySelector(".list-info");
 const listOptions = document.querySelector(".list-options");
@@ -35,6 +35,7 @@ iconContainer.addEventListener("click", (e) => {
     }
   }
 });
+
 inputField.addEventListener("change", () => {
   listInfo.style.display = "flex";
   const value = inputField.value;
@@ -123,11 +124,18 @@ listOptions.addEventListener("click", (event) => {
   }
 });
 
-clearBtn.addEventListener("click", () => {
-  listItems.innerHTML = "";
-  listInfo.style.display = "none";
-  listCount = 0;
-  remainingItems.textContent = `${listCount} items`;
+clearCompletedBtn.addEventListener("click", () => {
+  const items = document.querySelectorAll(".item");
+  items.forEach((item) => {
+    if (item.querySelector(".tickbox").classList.contains("tickbox-active")) {
+      item.remove();
+      --listCount;
+      if (listCount === 0) {
+        listInfo.style.display = "none";
+      }
+    }
+    remainingItems.textContent = `${listCount} items`;
+  });
 });
 
 function showAll() {
