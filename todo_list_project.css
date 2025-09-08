@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+:root {
+  font-size: 18px;
+  --White: #fff;
+  --Blue: hsl(210, 100%, 50%);
+  /* ### Light Theme */
+  --theme-1-bg: hsl(0, 0%, 98%);
+  --theme-1-todo-bg: hsl(0, 0%, 98%);
+  --theme-1-border: hsl(233, 11%, 84%);
+  /* --Light-Grayish-Blue: hsl(233, 11%, 84%); */
+  --theme-1-text: hsl(236, 9%, 61%);
+  --theme-1-title-text: hsl(235, 19%, 35%);
+
+  /* ### Dark Theme */
+
+  --theme-2-bg: hsl(235, 21%, 11%);
+  --theme-2-todo-bg: hsl(235, 24%, 19%);
+  --theme-2-title-text: hsl(234, 39%, 85%);
+  --Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
+  --Dark-Grayish-Blue: hsl(234, 11%, 52%);
+  --theme-2-border: hsl(233, 14%, 35%);
+  /* --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%); */
+  --theme-2-text: hsl(237, 14%, 26%);
+
+  /* Check Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%) */
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  background-color: var(--theme-1-bg);
+  /* background-color: black; */
+}
+
+header img {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+  /* max-width: 450px; */
+  width: 500px;
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.top-section h2 {
+  color: var(--White);
+  font-size: 2rem;
+  letter-spacing: 15px;
+}
+.sun-icon {
+  display: none;
+  cursor: pointer;
+}
+.moon-icon {
+  /* display: visi; */
+  cursor: pointer;
+}
+.input-section {
+  background-color: var(--theme-1-todo-bg);
+  /* background-color: black; */
+  padding: 0.3em;
+  border-radius: 0.3rem;
+  /* border: 1px solid grey; */
+}
+.input-section input {
+  padding: 0.7em;
+  font-size: 1rem;
+  border: none;
+  width: 100%;
+  outline: none;
+  background-color: var(--theme-1-todo-bg);
+  color: var(--theme-1-title-text);
+}
+.todo-list {
+  /* border: 1px solid var(--Very-Dark-Grayish-Blue); */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: var(--theme-1-todo-bg);
+  /* background-color: black; */
+  border-radius: 0.3rem;
+}
+.list-items article {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1.2em;
+  border-bottom: 1px solid var(--theme-1-border);
+  position: relative;
+  user-select: none;
+  cursor: grab;
+  transition: cursor 0.2s ease-in-out;
+}
+article.dragging {
+  cursor: grabbing;
+}
+.list-items article:hover .cross-btn {
+  display: block;
+}
+article .title {
+  flex-grow: 1;
+  color: var(--theme-1-title-text);
+  display: flex;
+  align-items: center;
+}
+.title-remove {
+  text-decoration: line-through;
+  color: var(--theme-1-text) !important;
+}
+.tickbox {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid var(--theme-1-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.tickbox-active {
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+article .cross-btn {
+  cursor: pointer;
+  display: none;
+}
+.list-info {
+  display: none;
+  font-size: 0.8rem;
+  justify-content: space-between;
+  padding: 1em;
+}
+.list-info p {
+  color: var(--theme-1-text);
+}
+.list-info ul {
+  display: flex;
+  gap: 10px;
+  color: var(--theme-1-text);
+}
+.list-info ul li {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+.active-option {
+  color: var(--Blue);
+}
+.list-info button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--theme-1-text);
+}
